@@ -1,0 +1,2 @@
+https://www.educative.io/answers/how-do-you-translate-text-using-python
+implement this instead, it translates much better
