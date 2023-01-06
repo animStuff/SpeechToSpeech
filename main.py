@@ -29,7 +29,7 @@ class app(QWidget):
         self.label = QLabel(self)
         self.label.move(int((self.squareSize - size1)/2), self.squareSize - C1)
         self.label.resize(size1, size1)
-        self.label.setStyleSheet(f"border: 4px solid white;border-radius: {size1/2}px;")
+        self.label.setStyleSheet(f"border: 8px solid white;border-radius: {size1/2}px;")
 
         movieSize, C2 = 220, -415
         self.movie = QMovie('assets/animation.gif')
@@ -44,7 +44,17 @@ class app(QWidget):
         self.button.move(int((self.squareSize - buttonSize)/2), 500)
         self.button.setIcon(QIcon('assets/button.png'))
         self.button.setIconSize(QSize(buttonSize, buttonSize))
-        self.button.setStyleSheet("border-radius: 50px")
+        self.button.setStyleSheet("""
+            QPushButton{
+                border-radius: 100px;
+            }
+           
+            QPushButton:hover{
+                background-color: #6B728E;
+               
+            }
+           
+        """)
         self.button.clicked.connect(self.onClick)
 
         self.hideAnimation = QPropertyAnimation(self.button, b"pos")

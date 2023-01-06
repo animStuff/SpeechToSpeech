@@ -1,6 +1,6 @@
 import pyaudio as pa, gtts
 import wave, speech_recognition as sr
-from translate import Translator
+from googletrans import Translator
 
 class audioManager:
     def __init__(self):
@@ -54,12 +54,13 @@ class audioManager:
 
     def convertLangSave(self, lang, text):
         try:
-            translator = Translator(from_lang="en-in",to_lang='french')
-            translated_text = translator.translate(text)
+            translator = Translator()
+            translated_text = translator.translate(text, dest='hi', src='en').text
             gtts.gTTS(text=translated_text, lang='hi', slow=False).save('translated.mp3') # saving the hindi file
             error = False
 
-        except:
+        except Exception as e:
+            print(e)
             error = True
             translated_text = 'An Error Occured ):'
 
